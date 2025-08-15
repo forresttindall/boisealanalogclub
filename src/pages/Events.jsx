@@ -21,13 +21,13 @@ const Events = () => {
       id: 1,
       title: "Western Idaho Fair Photo Walk",
       date: "Sunday August 24th",
-      time: "Pending",
+      time: "7:30pm",
       location: "5610 N Glenwood St, Boise, ID 83714",
-      description: "We are partnering with Lenses and Brushes to co-host our first group meet! Join us for a leisurely walk through the fair grounds. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome. More info to come!",
+      description: "We are partnering with Lenses and Brushes to co-host our first group meet! Join us for a leisurely walk through the fair grounds. We will be meeting in front of the gates at 7:30pm. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
       bringYourOwn: "Film camera, extra rolls of film, comfortable walking shoes, water",
       startDate: "2024-08-24",
-      startTime: "14:00",
-      endTime: "17:00"
+      startTime: "19:30",
+      endTime: null
     }
   ]
 
