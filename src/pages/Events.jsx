@@ -165,98 +165,6 @@ const Events = () => {
     setCurrentEventId(null)
   }
 
-  // Native share functionality
-  const handleShare = async (event) => {
-    const shareData = {
-      title: event.title,
-      text: `Join us for ${event.title} on ${event.date} at ${event.location}`,
-      url: window.location.href
-    }
-
-    try {
-      if (navigator.share && navigator.canShare(shareData)) {
-        await navigator.share(shareData)
-      } else {
-        // Fallback for browsers that don't support Web Share API
-        await navigator.clipboard.writeText(
-          `${shareData.title}\n${shareData.text}\n${shareData.url}`
-        )
-        alert('Event details copied to clipboard!')
-      }
-    } catch (error) {
-      console.error('Error sharing:', error)
-      // Final fallback - copy to clipboard
-      try {
-        await navigator.clipboard.writeText(
-          `${shareData.title}\n${shareData.text}\n${shareData.url}`
-        )
-        alert('Event details copied to clipboard!')
-      } catch (clipboardError) {
-        console.error('Clipboard access failed:', clipboardError)
-      }
-    }
-  }
-
-  // Add to calendar functionality
-  const addToCalendar = (event) => {
-    const startDate = new Date(`${event.startDate}T${event.startTime}:00`)
-    const endDate = new Date(`${event.startDate}T${event.endTime}:00`)
-    
-    const formatDate = (date) => {
-      return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z'
-    }
-    
-    const calendarData = {
-      title: encodeURIComponent(event.title),
-      start: formatDate(startDate),
-      end: formatDate(endDate),
-      description: encodeURIComponent(event.description),
-      location: encodeURIComponent(event.location)
-    }
-    
-    // Google Calendar URL
-    const googleUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${calendarData.title}&dates=${calendarData.start}/${calendarData.end}&details=${calendarData.description}&location=${calendarData.location}`
-    
-    // Outlook URL
-    const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${calendarData.title}&startdt=${calendarData.start}&enddt=${calendarData.end}&body=${calendarData.description}&location=${calendarData.location}`
-    
-    // ICS file for Apple Calendar and others
-    const icsContent = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Boise Analog Club//Events//EN
-BEGIN:VEVENT
-UID:${event.id}@boiseanalogclub.com
-DTSTAMP:${formatDate(new Date())}
-DTSTART:${calendarData.start}
-DTEND:${calendarData.end}
-SUMMARY:${event.title}
-DESCRIPTION:${event.description}
-LOCATION:${event.location}
-END:VEVENT
-END:VCALENDAR`
-    
-    // Detect platform and open appropriate calendar
-    const userAgent = navigator.userAgent.toLowerCase()
-    
-    if (userAgent.includes('iphone') || userAgent.includes('ipad') || userAgent.includes('mac')) {
-      // iOS/macOS - download ICS file
-      const blob = new Blob([icsContent], { type: 'text/calendar' })
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `${event.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.ics`
-      link.click()
-      URL.revokeObjectURL(url)
-    } else if (userAgent.includes('android')) {
-      // Android - try Google Calendar
-      window.open(googleUrl, '_blank')
-    } else {
-      // Desktop - show options
-      const choice = confirm('Add to calendar:\nOK for Google Calendar\nCancel for Outlook')
-      window.open(choice ? googleUrl : outlookUrl, '_blank')
-    }
-  }
-
   return (
     <div className="page events-page">
       <motion.div
@@ -324,18 +232,6 @@ END:VCALENDAR`
                 >
                   RSVP
                 </button>
-                <button 
-                  className="retro-button secondary"
-                  onClick={() => handleShare(event)}
-                >
-                  Share
-                </button>
-                <button 
-                  className="retro-button secondary"
-                  onClick={() => addToCalendar(event)}
-                >
-                  📅 Add to Calendar
-                </button>
               </div>
             </motion.div>
           ))}
@@ -386,7 +282,7 @@ END:VCALENDAR`
         </div>
       )}
 
-      {/* ... existing event guidelines section ... */}
+      {/* Event Guidelines Section */}
       <motion.section 
         className="event-info"
         initial={{ opacity: 0, y: 20 }}
