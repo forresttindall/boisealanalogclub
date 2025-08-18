@@ -1107,13 +1107,13 @@ h1 {
   
   .window {
     min-width: 320px;
-    max-width: 80vw;
+    max-width: 92vw;
     max-height: 85vh;
-    left: 10vw !important;
+    left: 4vw !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     margin: 0;
-    width: 80vw;
+    width: 92vw;
   }
   
   .start-menu-overlay {
@@ -1244,9 +1244,10 @@ h1 {
 @media (max-width: 480px) {
   .window {
     min-width: 300px;
-    width: 80vw;
+    width: 92vw;
+    max-width: 92vw;
     max-height: 90vh;
-    left: 10vw !important;
+    left: 4vw !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
     margin: 0;
