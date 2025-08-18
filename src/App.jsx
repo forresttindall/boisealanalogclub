@@ -16,6 +16,7 @@ function App() {
   const [showStartMenu, setShowStartMenu] = useState(false)
   const [openWindows, setOpenWindows] = useState(['home'])
   const [activeWindow, setActiveWindow] = useState('home')
+  const [windowOrder, setWindowOrder] = useState(['home']) // Add this new state
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -27,6 +28,10 @@ function App() {
   const openWindow = (windowId) => {
     if (!openWindows.includes(windowId)) {
       setOpenWindows([...openWindows, windowId])
+      setWindowOrder([...windowOrder.filter(id => id !== windowId), windowId]) // Add to end
+    } else {
+      // Move existing window to front
+      setWindowOrder([...windowOrder.filter(id => id !== windowId), windowId])
     }
     setActiveWindow(windowId)
     setShowStartMenu(false)
@@ -34,10 +39,18 @@ function App() {
 
   const closeWindow = (windowId) => {
     const newOpenWindows = openWindows.filter(id => id !== windowId)
+    const newWindowOrder = windowOrder.filter(id => id !== windowId)
     setOpenWindows(newOpenWindows)
-    if (activeWindow === windowId && newOpenWindows.length > 0) {
-      setActiveWindow(newOpenWindows[newOpenWindows.length - 1])
+    setWindowOrder(newWindowOrder)
+    if (activeWindow === windowId && newWindowOrder.length > 0) {
+      setActiveWindow(newWindowOrder[newWindowOrder.length - 1])
     }
+  }
+
+  // Add this new function to handle window focusing
+  const focusWindow = (windowId) => {
+    setActiveWindow(windowId)
+    setWindowOrder([...windowOrder.filter(id => id !== windowId), windowId])
   }
 
   const toggleStartMenu = () => {
@@ -59,11 +72,11 @@ function App() {
       
       <div className="window-manager">
         <AnimatePresence>
-          {openWindows.map((windowId, index) => {
+          {openWindows.map((windowId) => {
             const windowConfig = windows[windowId]
             const Component = windowConfig.component
-            const baseZIndex = 100 + index * 10
-            const windowZIndex = activeWindow === windowId ? baseZIndex + 5 : baseZIndex
+            const orderIndex = windowOrder.indexOf(windowId)
+            const windowZIndex = 100 + orderIndex * 10 // Base z-index on order, not array index
             return (
               <Window
                 key={windowId}
@@ -72,7 +85,7 @@ function App() {
                 icon={windowConfig.icon}
                 isActive={activeWindow === windowId}
                 onClose={() => closeWindow(windowId)}
-                onFocus={() => setActiveWindow(windowId)}
+                onFocus={() => focusWindow(windowId)} // Use new focus function
                 zIndex={windowZIndex}
               >
                 <Component openWindow={openWindow} />
@@ -96,7 +109,7 @@ function App() {
         onStartClick={toggleStartMenu}
         openWindows={openWindows}
         activeWindow={activeWindow}
-        setActiveWindow={setActiveWindow}
+        setActiveWindow={focusWindow} // Use focusWindow instead of setActiveWindow
         windows={windows}
       />
     </div>
