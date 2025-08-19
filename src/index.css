@@ -56,7 +56,8 @@ body {
 /* Nav link color rules - default black, active blue (override any previous) */
 .floating-nav .nav-link {
   color: var(--pure-black) !important; /* default black */
-  border: none !important
+  border: none !important;
+  padding: 0 10px;
 }
 .floating-nav .nav-link:hover {
   color: var(--pure-black) !important; /* keep hover black */
@@ -1041,6 +1042,24 @@ img {
 .home-page .hero-image .featured-image {
   border-radius: 16px;
   overflow: hidden;
+}
+
+/* Hero image container positioning for credit overlay */
+.home-page .hero-image {
+  position: relative; /* enable absolute overlay positioning */
+}
+
+/* Hero image credit overlay */
+.home-page .hero-credit {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  color: var(--neon-chartreuse); /* neon green */
+  font-size: 12px; /* small text */
+  font-weight: var(--font-weight-medium);
+  z-index: 2; /* above the image */
+  pointer-events: none; /* don't block taps */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7); /* legibility over bright images */
 }
 
 /* Home: typographic-forward section below hero */
