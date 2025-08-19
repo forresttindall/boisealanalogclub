@@ -343,6 +343,7 @@ p {
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 3px;
+  text-align: left;;
 }
 
 /* Grid Layouts */
