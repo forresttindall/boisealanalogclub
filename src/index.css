@@ -1302,7 +1302,10 @@ html, body, .app, .page, .main-content {
 
 .contact-page .contact-form-section {
   width: 100%;
- 
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
   margin: 0 auto;
 }
 
@@ -1311,6 +1314,7 @@ html, body, .app, .page, .main-content {
   flex-direction: column;
   gap: 24px;
   width: 100%;
+  max-width: 600px;
 }
 
 .contact-page .form-row {
