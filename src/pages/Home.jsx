@@ -25,7 +25,7 @@ function Home() {
 
         <div className="hero-image">
           <img src="/Images/IMG_0919.JPG" alt="Film Photography" className="featured-image" />
-          <span className="hero-credit">@exhausted.imagery</span>
+          <span className="hero-credit">@exhausted_imagery</span>
         </div>
       </motion.div>
 
