@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { createClient } from '@supabase/supabase-js'
 import emailjs from '@emailjs/browser'
+import { Calendar, Clock, MapPin } from 'lucide-react'
 
 // Initialize Supabase
 const supabase = createClient(
@@ -10,6 +11,14 @@ const supabase = createClient(
 )
 
 const Events = () => {
+
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+
+  
   const [rsvpData, setRsvpData] = useState({})
   const [showRsvpModal, setShowRsvpModal] = useState(false)
   const [currentEventId, setCurrentEventId] = useState(null)
@@ -182,7 +191,7 @@ const Events = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.6 }}
       >
-        <h2>Upcoming Events</h2>
+        {/* Removed: <h2>Upcoming Events</h2> */}
         <div className="events-grid">
           {upcomingEvents.map((event, index) => (
             <motion.div
@@ -204,15 +213,15 @@ const Events = () => {
               <div className="event-details">
                 <div className="event-meta">
                   <div className="meta-item">
-                    <span className="meta-icon">•</span>
+                    <Calendar className="meta-icon" size={16} strokeWidth={2} />
                     <span>{event.date}</span>
                   </div>
                   <div className="meta-item">
-                    <span className="meta-icon">🕐</span>
+                    <Clock className="meta-icon" size={16} strokeWidth={2} />
                     <span>{event.time}</span>
                   </div>
                   <div className="meta-item">
-                    <span className="meta-icon">📍</span>
+                    <MapPin className="meta-icon" size={16} strokeWidth={2} />
                     <span>{event.location}</span>
                   </div>
                 </div>
@@ -227,7 +236,7 @@ const Events = () => {
               
               <div className="event-actions">
                 <button 
-                  className="retro-button"
+                  className="btn"
                   onClick={() => handleRsvpClick(event.id)}
                 >
                   RSVP
@@ -264,14 +273,14 @@ const Events = () => {
             </div>
             <div className="modal-actions">
               <button 
-                className="retro-button"
+                className="btn"
                 onClick={handleRsvpSubmit}
                 disabled={!rsvpName.trim() || isSubmitting}
               >
                 {isSubmitting ? 'Submitting...' : 'Confirm RSVP'}
               </button>
               <button 
-                className="retro-button secondary"
+                className="btn"
                 onClick={handleRsvpCancel}
                 disabled={isSubmitting}
               >
@@ -289,26 +298,23 @@ const Events = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.9, duration: 0.6 }}
       >
-        <h2>Event Guidelines</h2>
-        <div className="guidelines-grid">
-          <div className="guideline-item">
-            <h3>All Skill Levels Welcome</h3>
-            <p>Whether you're just starting with film photography or you're a seasoned pro, our events are designed to be inclusive and educational for everyone.</p>
+        <h2 className="home-typo-title">Event Guidelines</h2>
+        <div className="home-features">
+          <div className="feature">
+            <h3 className="feature-title">All Skill Levels Welcome</h3>
+            <p className="feature-desc">Whether you're just starting with film photography or you're a seasoned pro, our events are designed to be inclusive and educational for everyone.</p>
           </div>
-          
-          <div className="guideline-item">
-            <h3>Bring Your Camera</h3>
-            <p>Don't forget your camera and some film! We'll have opportunities to shoot and share techniques throughout our events.</p>
+          <div className="feature">
+            <h3 className="feature-title">Bring Your Camera</h3>
+            <p className="feature-desc">Don't forget your camera and some film! We'll have opportunities to shoot and share techniques throughout our events.</p>
           </div>
-          
-          <div className="guideline-item">
-            <h3>Community First</h3>
-            <p>Our events are about building connections and learning from each other. Come ready to share, learn, and make new friends.</p>
+          <div className="feature">
+            <h3 className="feature-title">Community First</h3>
+            <p className="feature-desc">Our events are about building connections and learning from each other. Come ready to share, learn, and make new friends.</p>
           </div>
-          
-          <div className="guideline-item">
-            <h3>Stay Updated</h3>
-            <p>Event details may change due to weather or other factors. Make sure to check your email and our social media for updates.</p>
+          <div className="feature">
+            <h3 className="feature-title">Stay Updated</h3>
+            <p className="feature-desc">Event details may change due to weather or other factors. Make sure to check your email and our social media for updates.</p>
           </div>
         </div>
       </motion.section>

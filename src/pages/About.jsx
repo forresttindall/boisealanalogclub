@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Instagram } from 'lucide-react'
+
+
 
 const About = ({ openWindow }) => {
+
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0 }
@@ -53,41 +62,41 @@ const About = ({ openWindow }) => {
       </motion.section>
 
       <motion.section 
-        className="values-section"
+        className="home-typo"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <h2>Our Values</h2>
-        <div className="values-grid">
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Inclusivity</h3>
-            <p>Photography is for everyone. We welcome photographers of all backgrounds, skill levels, and identities. Our community thrives on diversity and mutual respect.</p>
+        <h2 className="home-typo-title">Our Values</h2>
+        <div className="home-features">
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Inclusivity</h3>
+            <p className='feature-desc'>Photography is for everyone. We welcome photographers of all backgrounds, skill levels, and identities. Our community thrives on diversity and mutual respect.</p>
           </motion.div>
 
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Learning</h3>
-            <p>We believe in continuous growth and knowledge sharing. Whether you're teaching or learning, every interaction is an opportunity to expand our collective understanding.</p>
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Learning</h3>
+            <p className='feature-desc'>We believe in continuous growth and knowledge sharing. Whether you're teaching or learning, every interaction is an opportunity to expand our collective understanding.</p>
           </motion.div>
 
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Creativity</h3>
-            <p>Film photography encourages intentional, thoughtful image-making. We celebrate unique perspectives and artistic expression in all its forms.</p>
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Creativity</h3>
+            <p className='feature-desc'>Film photography encourages intentional, thoughtful image-making. We celebrate unique perspectives and artistic expression in all its forms.</p>  
           </motion.div>
 
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Community</h3>
-            <p>Strong relationships are the foundation of our club. We prioritize building genuine connections and supporting each other's photographic journeys.</p>
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Community</h3>
+            <p className='feature-desc'>Strong relationships are the foundation of our club. We prioritize building genuine connections and supporting each other's photographic journeys.</p>
           </motion.div>
 
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Sustainability</h3>
-            <p>We're committed to responsible photography practices and supporting the longevity of analog photography for future generations.</p>
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Sustainability</h3>
+            <p className='feature-desc'>We're committed to responsible photography practices and supporting the longevity of analog photography for future generations.</p>
           </motion.div>
 
-          <motion.div className="value-item" variants={itemVariants}>
-            <h3>Intentionality</h3>
-            <p>We embrace the slower, more deliberate approach that film photography naturally encourages.</p>
+          <motion.div className="feature" variants={itemVariants}>
+            <h3 className='feature-title'>Intentionality</h3>
+            <p className='feature-desc'>We embrace the slower, more deliberate approach that film photography naturally encourages.</p>
           </motion.div>
         </div>
       </motion.section>
@@ -109,9 +118,9 @@ const About = ({ openWindow }) => {
               transition={{ delay: 1.2 + index * 0.2 }}
             >
               <div className="founder-info">
-                <h3>{member.name}</h3>
+                <h3 className='feature-title'>{member.name}</h3>
                 <h4>{member.role}</h4>
-                <p>{member.bio}</p>
+                <p className='feature-desc'>{member.bio}</p>
                 <div className="founder-camera">
                   <span>Equipment: {member.camera}</span>
                 </div>
@@ -122,11 +131,7 @@ const About = ({ openWindow }) => {
                     rel="noopener noreferrer"
                     className="instagram-link"
                   >
-                    <img 
-                      src="/Images/instagram.png" 
-                      alt="Instagram" 
-                      className="instagram-icon"
-                    />
+                    <Instagram className="instagram-icon" aria-hidden="true" />
                     @{member.instagram}
                   </a>
                 </div>
@@ -154,6 +159,15 @@ const About = ({ openWindow }) => {
             <div className="step">
               <h3>1. Follow Us</h3>
               <p>Stay updated on events and community news through our social media and email list.</p>
+                 <a 
+              href="https://instagram.com/Boise.analog.club"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="instagram-link community-instagram"
+            >
+              <Instagram className="instagram-icon" aria-hidden="true" />
+              @Boise.analog.club
+            </a>
             </div>
             
             <div className="step">
@@ -167,28 +181,15 @@ const About = ({ openWindow }) => {
             </div>
           </div>
           
-          <div className="community-social">
-            <p>Follow us on Instagram for updates, member spotlights, and inspiration:</p>
-            <a 
-              href="https://instagram.com/Boise.analog.club"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="instagram-link community-instagram"
-            >
-              <img 
-                src="/Images/instagram.png" 
-                alt="Instagram" 
-                className="instagram-icon"
-              />
-              @Boise.analog.club
-            </a>
-          </div>
+
           
           <div className="contact-cta">
-            <p>Questions? Ideas for events? Want to get involved in organizing?</p>
-            <button className="retro-button" onClick={() => openWindow('contact')}>
+            <div>
+            <p className="contact-cta">Questions? Ideas for events? Want to get involved in organizing?</p>
+            <button className="btn" onClick={() => openWindow('contact')}>
               Get in Touch
             </button>
+            </div>
           </div>
         </div>
       </motion.section>

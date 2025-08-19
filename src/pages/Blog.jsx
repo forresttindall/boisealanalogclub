@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 const Blog = () => {
+
+    useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+
   const blogPosts = [
     {
       id: 1,
@@ -20,7 +26,7 @@ const Blog = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>Club Blog</h1>
+        <h1>Blog</h1>
         <p className="page-subtitle">Stories, updates, and insights from the Boise analog photography community</p>
       </motion.div>
 
@@ -55,25 +61,7 @@ const Blog = () => {
         ))}
       </motion.div>
 
-      <motion.div 
-        className="blog-sidebar"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
-      >
-        <div className="sidebar-widget">
-          <h3>Recent Posts</h3>
-          <ul>
-            {blogPosts.slice(0, 3).map(post => (
-              <li key={post.id}>
-                <a href={`#post-${post.id}`}>{post.title}</a>
-                <span className="sidebar-date">{post.date}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
 
-      </motion.div>
     </div>
   )
 }
