@@ -17,9 +17,16 @@ function App() {
     home: { title: 'Home', component: Home },
     events: { title: 'Events', component: Events },
     blog: { title: 'Blog', component: Blog },
-        about: { title: 'About', component: About },
+    about: { title: 'About', component: About },
     contact: { title: 'Contact', component: Contact },
+  }
 
+  // Remove 'home' from the nav links but keep it in pages for routing
+  const navPages = {
+    events: { title: 'Events', component: Events },
+    blog: { title: 'Blog', component: Blog },
+    about: { title: 'About', component: About },
+    contact: { title: 'Contact', component: Contact },
   }
 
   const navigateTo = (pageId) => {
@@ -34,7 +41,12 @@ function App() {
       {/* Floating nav replaces Desktop/Taskbar/StartMenu */}
       <nav className="floating-nav">
         <div className="nav-container">
-          <motion.div className="nav-logo" whileHover={{ scale: 1.05 }}>
+          <motion.div 
+            className="nav-logo" 
+            whileHover={{ scale: 1.05 }}
+            onClick={() => navigateTo('home')}
+            style={{ cursor: 'pointer' }}
+          >
             Boise Analog
           </motion.div>
 
@@ -52,7 +64,7 @@ function App() {
             id="primary-navigation"
             className={`nav-links ${isNavOpen ? 'open' : ''}`}
           >
-            {Object.entries(pages).map(([pageId, page]) => (
+            {Object.entries(navPages).map(([pageId, page]) => (
               <li key={pageId}>
                 <motion.button
                   className={`nav-link ${currentPage === pageId ? 'active' : ''}`}

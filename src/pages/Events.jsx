@@ -266,7 +266,7 @@ const Events = () => {
                 value={rsvpName}
                 onChange={(e) => setRsvpName(e.target.value)}
                 placeholder="Your name"
-                className="retro-input"
+                className="rsvp-modal-input"
                 autoFocus
                 onKeyPress={(e) => e.key === 'Enter' && handleRsvpSubmit()}
               />

@@ -461,7 +461,7 @@ img {
 
 .featured-image {
   width: 100%;
-  height: 400px;
+  height: 600px;
   object-fit: cover;
   border-radius: 0;
   border: none;
@@ -1046,6 +1046,7 @@ img {
 
 /* Hero image container positioning for credit overlay */
 .home-page .hero-image {
+  
   position: relative; /* enable absolute overlay positioning */
 }
 
@@ -1441,4 +1442,127 @@ html, body, .app, .page, .main-content {
   background: transparent !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+/* RSVP Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.rsvp-modal {
+  background: var(--pure-white);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.modal-header h3 {
+  margin: 0 0 20px 0;
+  color: var(--dark-gray);
+  font-size: 24px;
+  text-align: center;
+}
+
+.modal-content {
+  margin-bottom: 25px;
+}
+
+.modal-content p {
+  margin: 0 0 15px 0;
+  color: var(--medium-gray);
+  text-align: center;
+}
+
+.rsvp-modal-input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid var(--light-gray);
+  border-radius: 15px;
+  font-size: 16px;
+  background: var(--pure-white);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.rsvp-modal-input:focus {
+  outline: none;
+  border-color: var(--electric-blue);
+  box-shadow: 0 0 0 4px rgba(9, 112, 255, 0.1);
+}
+
+.rsvp-modal-input::placeholder {
+  color: var(--medium-gray);
+  font-weight: var(--font-weight-regular);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.modal-actions .btn {
+  padding: 12px 24px;
+  border-radius: 15px;
+  border: none;
+  font-size: 16px;
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.modal-actions .btn:first-child {
+  background: var(--electric-blue);
+  color: white;
+}
+
+.modal-actions .btn:first-child:hover:not(:disabled) {
+  background: var(--dark-blue);
+  transform: translateY(-2px);
+}
+
+.modal-actions .btn:last-child {
+  background: var(--light-gray);
+  color: var(--dark-gray);
+}
+
+.modal-actions .btn:last-child:hover:not(:disabled) {
+  background: var(--medium-gray);
+  transform: translateY(-2px);
+}
+
+.modal-actions .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@media (max-width: 480px) {
+  .rsvp-modal {
+    margin: 20px;
+    padding: 25px 20px;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+  }
+  
+  .modal-actions .btn {
+    width: 100%;
+  }
 }
