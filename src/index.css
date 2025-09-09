@@ -1444,6 +1444,27 @@ html, body, .app, .page, .main-content {
   outline: none !important;
 }
 
+/* Events Grid Spacing */
+.events-grid {
+  gap: 32px;
+  margin: 40px 0;
+  margin-bottom: 20px !important;
+}
+
+.upcoming-events {
+  margin-bottom: 40px !important;
+}
+.events-card {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    
+    gap: 24px;
+  }
+}
+
 /* RSVP Modal Styles */
 .modal-overlay {
   position: fixed;
