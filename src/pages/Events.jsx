@@ -10,14 +10,14 @@ const Events = () => {
   const upcomingEvents = [
     {
       id: 2,
-      title: "Downtown Boise Photowalk and Studio Tour",
-      date: "Sunday September 21st",
-      time: "11:00AM",
-      location: "404 S 8th St L100, Boise Idaho",
-      description: "We are partnering with Lenses and Brushes to co-host our second group meet! Join us for a studio tour of Lenses And Brushes newly expanded photography studio and darkroom followed by a leisurely walk through downtown Boise. We will be meeting at lenses and brushes studio at 11:00AM. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
+      title: "Holloween on Harrison Blvd Photo Walk",
+      date: "Sunday September 26th",
+      time: "11:30AM",
+      location: "2455 N Highlands Hollow, Boise Idaho 83702 (farthest overflow parking lot",
+      description: " Join us for a leisurely walk through Harrison blvd. We will be meeting at far parking lot of Highlands Hollow Brewing. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
       bringYourOwn: "Film camera, extra rolls of film, comfortable walking shoes, water",
-      startDate: "2025-09-21",
-      startTime: "11:00",
+      startDate: "2025-10-26",
+      startTime: "11:30",
       endTime: null
     },
    
