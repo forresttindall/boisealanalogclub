@@ -10,13 +10,13 @@ const Events = () => {
   const upcomingEvents = [
     {
       id: 2,
-      title: "Holloween on Harrison Blvd Photo Walk",
-      date: "Sunday September 26th",
+      title: "West Downtown Boise",
+      date: "Sunday November 16th",
       time: "11:30AM",
-      location: "2455 N Highlands Hollow, Boise Idaho 83702 (farthest overflow parking lot",
-      description: " Join us for a leisurely walk through Harrison blvd. We will be meeting at far parking lot of Highlands Hollow Brewing. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
+      location: "Rhodes Skate Park 1555 W Front St, Boise, ID 83702",
+      description: " Join us for a leisurely from Rhodes Skate Park into west downtown Boise. We will be meeting at Rhodes Skate Park. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
       bringYourOwn: "Film camera, extra rolls of film, comfortable walking shoes, water",
-      startDate: "2025-10-26",
+      startDate: "2025-11-16",
       startTime: "11:30",
       endTime: null
     },
