@@ -16,7 +16,7 @@ function App() {
   const pages = {
     home: { title: 'Home', component: Home },
     events: { title: 'Events', component: Events },
-    blog: { title: 'Blog', component: Blog },
+   
     about: { title: 'About', component: About },
     contact: { title: 'Contact', component: Contact },
   }
@@ -24,7 +24,7 @@ function App() {
   // Remove 'home' from the nav links but keep it in pages for routing
   const navPages = {
     events: { title: 'Events', component: Events },
-    blog: { title: 'Blog', component: Blog },
+    
     about: { title: 'About', component: About },
     contact: { title: 'Contact', component: Contact },
   }

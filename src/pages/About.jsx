@@ -21,7 +21,7 @@ const About = ({ openWindow }) => {
       name: "Forrest Tindall",
       role: "Club Founder & President",
       bio: "Began film photography in 2005, went on to have a career in product photography for a number of years receiving publishing in Popular Mechanics magazine and others. Now enjoys film photography purely as a hobby just for the enjoyment of the art.",
-      camera: "Nikon F100, Konica C35, Yashica Electro 35",
+      
       instagram: "forrest.tindall"
     }
   ]
@@ -121,9 +121,7 @@ const About = ({ openWindow }) => {
                 <h3 className='feature-title'>{member.name}</h3>
                 <h4>{member.role}</h4>
                 <p className='feature-desc'>{member.bio}</p>
-                <div className="founder-camera">
-                  <span>Equipment: {member.camera}</span>
-                </div>
+              
                 <div className="founder-social">
                   <a 
                     href={`https://instagram.com/${member.instagram}`}
