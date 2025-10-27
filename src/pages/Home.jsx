@@ -68,7 +68,7 @@ function Home() {
         <div className="home-gallery-wrap">
           <div className="home-gallery-grid">
             {[
-              { src: './Images/Will10-26529.jpg', photographer: '@wi;;.k.burkhart' },
+              { src: './Images/Will10-26529.jpg', photographer: '@will.k.burkhart' },
               { src: '/Images/gasstation.jpg', photographer: '@forrest.tindall' },
               { src: '/Images/AD91D45A-C6F3-4947-AE86-45D98A009ED6.JPG', photographer: '@mcgillis_captures' },
               { src: '/Images/1.jpg', photographer: '@forrest.tindall' },
