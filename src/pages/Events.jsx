@@ -14,7 +14,7 @@ const Events = () => {
       date: "Sunday November 16th",
       time: "11:30AM",
       location: "Rhodes Skate Park 1555 W Front St, Boise, ID 83702",
-      description: " Join us for a leisurely from Rhodes Skate Park into west downtown Boise. We will be meeting at Rhodes Skate Park. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
+      description: " Join us for a leisurely walk from Rhodes Skate Park into west downtown Boise. We will be meeting at Rhodes Skate Park. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
       bringYourOwn: "Film camera, extra rolls of film, comfortable walking shoes, water",
       startDate: "2025-11-16",
       startTime: "11:30",
