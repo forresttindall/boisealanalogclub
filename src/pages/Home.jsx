@@ -24,7 +24,7 @@ function Home() {
         </p>
 
         <div className="hero-image">
-          <img src="/Images/gasstation.jpg" alt="Film Photography" className="featured-image" />
+          <img src="/Images/IMG_2438.PNG" alt="Film Photography" className="featured-image" />
           <span className="hero-credit"></span>
         </div>
       </motion.div>
@@ -68,9 +68,10 @@ function Home() {
         <div className="home-gallery-wrap">
           <div className="home-gallery-grid">
             {[
+              { src: './Images/Will10-26529.jpg', photographer: '@wi;;.k.burkhart' },
+              { src: '/Images/gasstation.jpg', photographer: '@forrest.tindall' },
               { src: '/Images/AD91D45A-C6F3-4947-AE86-45D98A009ED6.JPG', photographer: '@mcgillis_captures' },
               { src: '/Images/1.jpg', photographer: '@forrest.tindall' },
-              { src: '/Images/IMG_0842.JPG', photographer: '@aidan.cleve' },
               { src: '/Images/IMG_0919.JPG', photographer: '@exhausted_imagery' },
               { src: '/Images/EA527AD7-6AE5-4797-9ABA-7BED5A35EEED.JPG', photographer: '@mcgillis_captures' },
               { src: '/Images/IMG_0810.JPG', photographer: '@aidan.cleve' },
