@@ -462,11 +462,9 @@ img {
 .featured-image {
 
   height: 100%;
-  object-fit: cover;
+ 
   border-radius: 0;
-  border: none;
-  box-shadow: none;
-  transition: none;
+
 }
 
 .featured-image:hover {
