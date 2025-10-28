@@ -462,7 +462,7 @@ img {
 .featured-image {
 
   height: 100%;
- 
+ width: auto;
   border-radius: 0;
 
 }
