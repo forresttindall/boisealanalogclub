@@ -24,7 +24,7 @@ function Home() {
         </p>
 
         <div className="hero-image">
-          <img src="/Images/IMG_2438.PNG" alt="Film Photography" className="featured-image" />
+          <img src="/Images/IMG_3141.JPG" alt="Film Photography" className="featured-image" />
           <span className="hero-credit"></span>
         </div>
       </motion.div>
