@@ -38,8 +38,7 @@ function App() {
 
   return (
     <div className="app">
-      {/* Floating nav replaces Desktop/Taskbar/StartMenu */}
-      <nav className="floating-nav">
+      <nav className="site-nav">
         <div className="nav-container">
           <motion.div 
             className="nav-logo" 
@@ -47,7 +46,7 @@ function App() {
             onClick={() => navigateTo('home')}
             style={{ cursor: 'pointer' }}
           >
-            Boise Analog
+            <img src="/Images/analoglogo.png" alt="Boise Analog Club" className="nav-logo-img" />
           </motion.div>
 
           <button

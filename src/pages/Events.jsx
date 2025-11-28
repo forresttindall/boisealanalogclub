@@ -10,15 +10,15 @@ const Events = () => {
   const upcomingEvents = [
     {
       id: 2,
-      title: "West Downtown Boise",
-      date: "Sunday November 16th",
+      title: " ",
+      date: "Sunday December 21st",
       time: "11:30AM",
       location: "Rhodes Skate Park 1555 W Front St, Boise, ID 83702",
       description: " Join us for a leisurely walk from Rhodes Skate Park into west downtown Boise. We will be meeting at Rhodes Skate Park. All are welcome to join, this is an inclusive environment. All skill levels and digital shooters are welcome.",
       bringYourOwn: "Film camera, extra rolls of film, comfortable walking shoes, water",
-      startDate: "2025-11-16",
+      startDate: "2025-12-21",
       startTime: "11:30",
-      endTime: null
+      endTime: null 
     },
    
   ]

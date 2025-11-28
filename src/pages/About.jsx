@@ -175,7 +175,7 @@ const About = ({ openWindow }) => {
             
             <div className="step">
               <h3>3. Share Your Work</h3>
-              <p>We love seeing what our members create! Share your film photos with the group.</p>
+              <p>We love seeing what our members create! Share your film photos with the group. Invite @Boise.analog.club to collaborate on Instagram!</p>
             </div>
           </div>
           

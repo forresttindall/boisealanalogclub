@@ -1,16 +1,22 @@
-/* Modern Avant-Garde Theme */
-@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: 'Bucklan Script';
+  src: url('/Fonts/BucklaneScript_PERSONAL_USE_ONLY.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 :root {
-  --neon-chartreuse: #6c757d;
-  --electric-blue: #1a1a1a;
+  --container-pad: 16px;
+  --brand-red: #ED1C24;
   --pure-black: #000000;
   --pure-white: #FFFFFF;
   --dark-gray: #1a1a1a;
   --light-gray: #f8f9fa;
   --medium-gray: #6c757d;
+  --nav-height: 64px;
   
-  --font-family: 'Kode Mono', monospace;
+  --font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -31,9 +37,9 @@
 body {
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
-  font-size: 13px; /* smaller typeface */
-  background: var(--neon-chartreuse); /* neon site background */
-  color: var(--pure-black); /* default text black */
+  font-size: 14px;
+  background: var(--pure-white);
+  color: var(--pure-black);
   line-height: 1.6;
   letter-spacing: 0.2px;
   overflow-x: hidden;
@@ -42,49 +48,92 @@ body {
 
 #root {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 /* App Layout */
 .app {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   position: relative;
   background: transparent;
 }
 
-/* Nav link color rules - default black, active blue (override any previous) */
-.floating-nav .nav-link {
-  color: var(--pure-black) !important; /* default black */
-  border: none !important;
-  padding: 0 10px;
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--brand-red);
+  color: var(--pure-white);
+  z-index: 1000;
 }
-.floating-nav .nav-link:hover {
-  color: var(--pure-black) !important; /* keep hover black */
+
+.site-nav .nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-.floating-nav .nav-link.active {
-  color: var(--electric-blue) !important; /* only active is blue */
+
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.site-nav .nav-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.site-nav .nav-link {
+  color: var(--pure-white);
+}
+
+.site-nav .nav-link:hover {
+  color: var(--pure-white);
+  opacity: 0.85;
+}
+
+.site-nav .nav-link.active {
+  color: var(--pure-white);
+  opacity: 1;
+}
+
+@media (max-width: 720px) {
+  .site-nav .nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pure-white);
+  }
+  .site-nav .nav-links {
+    display: none;
+    position: absolute;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: var(--brand-red);
+    padding: 8px;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .site-nav .nav-links.open { display: flex; }
+  .site-nav .nav-links .nav-link {
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+  }
 }
 
 /* Floating Navigation */
-.floating-nav {
-  position: fixed;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-radius: 9999px;
-  padding: 4px 12px;
-  z-index: 1000;
-  box-shadow: none;
-}
-.floating-nav:hover {
-  transform: translateX(-50%);
-  box-shadow: none;
-}
+/* old floating-nav retained below but unused */
 
 .nav-container {
   display: flex;
@@ -122,6 +171,15 @@ body {
     right: auto;
     transform: translateX(-50%);   /* keep centered to avoid shake */
     padding: 2px 10px;             /* compact pill */
+  }
+
+  .main-content .container,
+  .container {
+    padding-left: max(var(--container-pad), env(safe-area-inset-left)) !important;
+    padding-right: max(var(--container-pad), env(safe-area-inset-right)) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
   }
 
   .floating-nav .nav-container {
@@ -243,7 +301,7 @@ body {
 
 /* Main Content Area */
 .main-content {
-  padding-top: 120px;
+  padding-top: var(--nav-height);
   min-height: 100vh;
   width: 100%;
 }
@@ -252,29 +310,37 @@ body {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 var(--container-pad);
 }
 
 /* Typography System */
 h1 {
+  font-family: 'Bucklan Script', cursive;
   font-size: 40px;
   font-weight: var(--font-weight-bold);
   line-height: 0.9;
   margin-bottom: 24px;
-  color: var(--electric-blue);
+  color: var(--brand-red);
   text-align: left;
   letter-spacing: -2px;
   position: relative;
 }
 
+.events-page h1,
+.about-page h1,
+.contact-page h1 {
+  margin-top: 24px;
+}
+
 
 
 h2 {
-  font-size: clamp(22px, 3.5vw, 32px); /* ensure smaller than H1 (40px) */
+  font-family: 'Bucklan Script', cursive;
+  font-size: clamp(22px, 3.5vw, 32px);
   font-weight: var(--font-weight-semibold);
   line-height: 1.2;
   margin: 40px 0 16px 0;
-  color: var(--pure-black);
+  color: var(--brand-red);
   letter-spacing: -0.5px;
 }
 
@@ -316,7 +382,7 @@ p {
 /* Hero Section */
 .hero-section {
   text-align: center;
-  padding: 80px 0 16px 0;
+  padding: 0;
   position: relative;
   overflow: hidden;
 }
@@ -460,11 +526,9 @@ img {
 }
 
 .featured-image {
-
   height: auto;
- width: auto;
+  width: 100%;
   border-radius: 0;
-
 }
 
 .featured-image:hover {
@@ -605,12 +669,13 @@ img {
 
 /* Events */
 .event-card {
-  background: var(--pure-white);
-  border: 2px solid var(--light-gray);
+  background: var(--brand-red);
+  border: 2px solid var(--brand-red);
   border-radius: 16px;
   padding: 32px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  color: var(--pure-white);
 }
 
 .event-header {
@@ -631,29 +696,32 @@ img {
   gap: 8px;
   margin-bottom: 8px;
   font-size: 14px;
-  color: var(--medium-gray);
+  color: var(--pure-white);
   font-weight: var(--font-weight-medium);
 }
 
 .meta-icon {
-  color: var(--electric-blue);
+  color: var(--pure-white);
   font-size: 16px;
 }
 
 /* Events page typography */
 .events-page .event-card h3 {
   margin: 0 0 8px 0;
+  color: var(--pure-white);
 }
 .events-page .event-meta span,
 .events-page .event-description,
 .events-page .event-requirements p {
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--pure-white);
 }
 .events-page .event-requirements h4 {
   font-size: 1rem;
   margin: 12px 0 6px;
   font-weight: 600;
+  color: var(--pure-white);
 }
 
 /* Status Messages */
@@ -680,7 +748,10 @@ img {
 /* Responsive Design */
 @media (max-width: 768px) {
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
   }
   
   .main-content {
@@ -765,7 +836,10 @@ img {
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 16px;
+    padding-left: max(var(--container-pad), env(safe-area-inset-left));
+    padding-right: max(var(--container-pad), env(safe-area-inset-right));
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .floating-nav {
@@ -1037,9 +1111,24 @@ img {
 }
 
 /* Home: hero image rounded corners (only main hero image, not all images) */
+.home-page .hero-section {
+  padding-top: 24px;
+}
+
+.home-page .hero-image {
+  height: auto;
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .home-page .hero-image .featured-image {
-  border-radius: 16px;
-  overflow: hidden;
+  border-radius: 0;
+  position: static;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 /* Hero image container positioning for credit overlay */
@@ -1220,8 +1309,10 @@ html, body, .app, .page, .main-content {
 .about-page .founder-card {
   padding: 24px;
   border-radius: 12px;
-  background: var(--light-gray);
+  background: var(--brand-red);
+  border: 2px solid var(--brand-red);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  color: var(--pure-white);
 }
 
 .about-page .join-steps {
@@ -1234,8 +1325,34 @@ html, body, .app, .page, .main-content {
 .about-page .step {
   padding: 20px;
   border-radius: 8px;
-  background: var(--light-gray);
+  background: var(--brand-red);
+  border: 2px solid var(--brand-red);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  color: var(--pure-white);
+}
+
+.about-page .founder-card h2,
+.about-page .founder-card h3,
+.about-page .founder-card h4,
+.about-page .founder-card p,
+.about-page .step h2,
+.about-page .step h3,
+.about-page .step h4,
+.about-page .step p {
+  color: var(--pure-white);
+}
+
+.about-page .founder-card .instagram-link,
+.about-page .step .instagram-link {
+  color: var(--pure-white);
+}
+.about-page .founder-card .instagram-link:hover,
+.about-page .step .instagram-link:hover {
+  opacity: 0.85;
+}
+.about-page .founder-card .instagram-icon,
+.about-page .step .instagram-icon {
+  color: var(--pure-white);
 }
 
 .about-page .founder-camera,
@@ -1273,12 +1390,19 @@ html, body, .app, .page, .main-content {
 /* Ensure proper section spacing */
 .about-page .mission-section {
   margin-bottom: 60px;
-    background: var(--pure-white);
-  border: 2px solid var(--light-gray);
+  background: var(--brand-red);
+  border: 2px solid var(--brand-red);
   border-radius: 16px;
   padding: 32px;
   transition: all 0.3s ease;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  color: var(--pure-white);
+}
+
+.about-page .mission-section h2,
+.about-page .mission-section h3,
+.about-page .mission-section p {
+  color: var(--pure-white);
 }
 
 .about-page .founders-section {
