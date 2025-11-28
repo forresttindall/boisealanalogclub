@@ -787,6 +787,9 @@ img {
   .hero-section {
     padding: 60px 0 80px 0;
   }
+  .home-page .hero-section {
+    padding: 24px 0 0px 0;
+  }
   
   .hero-title {
     margin-bottom: 24px;
@@ -869,6 +872,20 @@ img {
   
   .hero-section {
     padding: 40px 0 60px 0;
+  }
+
+  .home-page .hero-section {
+    padding: 16px 0 8px 0;
+  }
+  .home-typo {
+    margin-top: 16px;
+    margin-bottom: 40px;
+  }
+  .home-typo-title {
+    margin-top: 16px;
+  }
+  .home-features {
+    margin-bottom: 40px;
   }
   
   .hero-subtitle {
