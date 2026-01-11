@@ -20,9 +20,9 @@ const About = ({ openWindow }) => {
     {
       name: "Forrest Tindall",
       role: "Club Founder & President",
-      bio: "Began film photography in 2005, went on to have a career in product photography for a number of years receiving publishing in Popular Mechanics magazine and others. Now enjoys film photography purely as a hobby just for the enjoyment of the art.",
+      bio: "Began film photography in at the age of 4 with disposable cameras, went on to have a career in product photography for a number of years receiving publishing in Popular Mechanics magazine and others. Now enjoys film photography purely as a hobby just for the enjoyment of the art.",
       
-      instagram: "forrest.tindall"
+      instagram: "forrest.creates"
     }
   ]
 
