@@ -16,7 +16,7 @@ const Events = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="hero-image">
-          <img src="/Images/BAC january.png" alt="Boise Analog Club Event Flyer" className="featured-image" />
+          <img src="/Images/BAC FEBUARY.png" alt="Boise Analog Club Event Flyer" className="featured-image" />
         </div>
       </motion.div>
 
