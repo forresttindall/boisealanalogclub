@@ -243,6 +243,7 @@ a {
 .page {
   display: grid;
   gap: 1rem;
+  min-width: 0;
 }
 
 .section-panel {
@@ -252,6 +253,7 @@ a {
   background: var(--panel);
   border: 1px solid var(--line);
   box-shadow: var(--shadow);
+  min-width: 0;
 }
 
 .section-panel::after {
@@ -287,6 +289,15 @@ a {
   gap: 1rem;
   align-items: start;
   margin-bottom: 1.5rem;
+}
+
+.editorial-header > * ,
+.hero-grid > *,
+.hero-media-grid > *,
+.feature-grid > *,
+.gallery-grid > *,
+.newsletter-public-grid > * {
+  min-width: 0;
 }
 
 .section-title {
@@ -681,6 +692,7 @@ a {
 
 .newsletter-input-row .form-input {
   flex: 1 1 16rem;
+  min-width: 0;
 }
 
 .newsletter-preview {
@@ -963,6 +975,15 @@ a {
   .site-footer-inner {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .newsletter-input-row {
+    align-items: stretch;
+  }
+
+  .newsletter-input-row > * {
+    width: 100%;
+    min-width: 0;
   }
 
   .gallery-card {
