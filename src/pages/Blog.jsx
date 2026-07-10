@@ -1,67 +1,54 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 
+const blogPosts = [
+  {
+    id: 1,
+    title: 'Welcome to Boise Analog Club',
+    date: 'August 14, 2025',
+    author: 'Forrest Tindall',
+    excerpt:
+      'A note on why the club exists, what kind of community it wants to become, and why film still feels socially important.',
+    content:
+      'Boise Analog Club started from a simple idea: film photography deserves a local culture around it, not just isolated accounts online. The club is meant to be generous, curious, and open to photographers at every skill level. The point is not perfection. The point is conversation, process, and building a real community around making images.',
+  },
+]
+
 const Blog = () => {
-
-    useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Welcome to the Boise Analog Club!",
-      date: "August 14, 2025",
-      author: "Forrest Tindall",
-      excerpt: "Building a welcoming community for film photography enthusiasts in Boise and beyond...",
-      content: "Welcome to the Boise Analog Club! I created this group to build a genuine community around our shared love of analog photography. In a world that's increasingly digital, there's something special about the deliberate, thoughtful process of shooting film. But more than that, I wanted to create a space where photographers of all backgrounds could come together, learn from each other, and celebrate this beautiful art form. Whether you're picking up your first film camera or you've been shooting analog for decades, this group is for you. We believe that photography is about more than just technical skills it's about connection, creativity, and community. My goal is to make this the most welcoming and inclusive photography group in Boise. Everyone has a unique perspective to share, and every voice matters here. We're not just about taking pictures; we're about building lasting friendships, supporting each other's creative journeys. I'm excited to see what we'll create together as a community."
-    }
-  ]
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
 
   return (
     <div className="page blog-page">
-      <motion.div
+      <motion.section
+        className="section-panel"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.55 }}
       >
-        <h1>Blog</h1>
-        <p className="page-subtitle">Stories, updates, and insights from the Boise analog photography community</p>
-      </motion.div>
+        <div className="editorial-header">
+          <p className="section-index">11</p>
+          <div>
+            <p className="mono-label">Journal</p>
+            <h1 className="section-title">Notes from the club.</h1>
+          </div>
+        </div>
 
-      <motion.div 
-        className="blog-posts"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-      >
-        {blogPosts.map((post, index) => (
-          <motion.article
-            key={post.id}
-            className="blog-post"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.2 }}
-          >
-            <div className="blog-post-header">
-              <h2>{post.title}</h2>
-              <div className="blog-meta">
-                <span className="blog-date">{post.date}</span>
-                <span className="blog-author">by {post.author}</span>
+        <div className="blog-list">
+          {blogPosts.map((post) => (
+            <article className="blog-entry" key={post.id}>
+              <div className="blog-entry-meta">
+                <span>{post.date}</span>
+                <span>{post.author}</span>
               </div>
-            </div>
-            
-            <div className="blog-content">
-              <p className="blog-excerpt">{post.excerpt}</p>
+              <h2>{post.title}</h2>
+              <p className="lead-copy">{post.excerpt}</p>
               <p>{post.content}</p>
-            </div>
-            
-          </motion.article>
-        ))}
-      </motion.div>
-
-
+            </article>
+          ))}
+        </div>
+      </motion.section>
     </div>
   )
 }

@@ -1,49 +1,127 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { currentEventFlyer } from '../../shared/eventFlyer'
+
+const eventFormats = [
+  {
+    title: 'Photo Walks',
+    copy: 'Street-oriented walks with room for conversation, experimentation, and seeing Boise through different film stocks and formats.',
+  },
+  {
+    title: 'Coffee Critiques',
+    copy: 'Low-pressure image reviews and process conversations around sequencing, editing, scanning, and print choices.',
+  },
+  {
+    title: 'Gear Swaps',
+    copy: 'Opportunities to trade cameras, find lenses, ask questions, and keep equipment circulating through the community.',
+  },
+  {
+    title: 'Special Sessions',
+    copy: 'Guest talks, mini workshops, and occasional one-off gatherings built around whatever the community is curious about.',
+  },
+]
+
+const eventNotes = [
+  'All skill levels are welcome.',
+  'Film is encouraged, but curiosity matters more than format.',
+  'Bring your camera, some film, water, and comfortable shoes.',
+  'Check Instagram before heading out in case plans shift.',
+]
 
 const Events = () => {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-  
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
 
   return (
     <div className="page events-page">
-      <motion.div
+      <motion.section
+        className="section-panel"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.55 }}
       >
-        <div className="hero-image">
-          <img src="/Images/bac may no 2.png" alt="Boise Analog Club Event Flyer" className="featured-image" />
+        <div className="editorial-header">
+          <p className="section-index">07</p>
+          <div>
+            <p className="mono-label">Events</p>
+            <h1 className="section-title section-title-wide">
+              Upcoming Events
+            </h1>
+          </div>
         </div>
-      </motion.div>
 
-      <motion.section 
-        className="event-info"
-        initial={{ opacity: 0, y: 20 }}
+        <div className="split-layout">
+          <figure className="poster-card event-flyer-card">
+            <img src={currentEventFlyer.imagePath} alt={currentEventFlyer.imageAlt} />
+          </figure>
+
+          <div className="text-stack">
+            <p className="lead-copy">
+              We organize regular gatherings that feel social first and formal
+              second: photo walks, casual meetups, swaps, and the occasional
+              workshop or critique.
+            </p>
+            <p>
+              The goal is simple. Make space for analog photographers in Boise
+              to meet each other, trade notes, and build an actual local scene.
+            </p>
+            <div className="info-block">
+              <p className="mono-label">Where updates happen</p>
+              <p>
+                New event details usually land on Instagram first, followed by
+                reminders and community reposts.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="section-panel"
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
+        transition={{ delay: 0.1, duration: 0.55 }}
       >
-        <h2 className="home-typo-title">Event Guidelines</h2>
-        <div className="home-features">
-          <div className="feature">
-            <h3 className="feature-title">All Skill Levels Welcome</h3>
-            <p className="feature-desc">Whether you're just starting with film photography or you're a seasoned pro, our events are designed to be inclusive and educational for everyone.</p>
+        <div className="editorial-header">
+          <p className="section-index">08</p>
+          <div>
+            <p className="mono-label">Formats</p>
+            <h2 className="section-title">A rotating program, not a rigid calendar.</h2>
           </div>
-          <div className="feature">
-            <h3 className="feature-title">Bring Your Camera</h3>
-            <p className="feature-desc">Don't forget your camera and some film! We'll have opportunities to shoot and share techniques throughout our events.</p>
+        </div>
+
+        <div className="feature-grid">
+          {eventFormats.map((format) => (
+            <article className="feature-card" key={format.title}>
+              <h3>{format.title}</h3>
+              <p>{format.copy}</p>
+            </article>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="section-panel"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.55 }}
+      >
+        <div className="editorial-header">
+          <p className="section-index">09</p>
+          <div>
+            <p className="mono-label">Guidelines</p>
+            <h2 className="section-title">What to expect when you come out.</h2>
           </div>
-          <div className="feature">
-            <h3 className="feature-title">Community First</h3>
-            <p className="feature-desc">Our events are about building connections and learning from each other. Come ready to share, learn, and make new friends.</p>
-          </div>
-          <div className="feature">
-            <h3 className="feature-title">Stay Updated</h3>
-            <p className="feature-desc">Event details may change due to weather or other factors. Make sure to check your email and our social media for updates.</p>
-          </div>
+        </div>
+
+        <div className="notes-grid">
+          {eventNotes.map((note, index) => (
+            <article className="note-card" key={note}>
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <p>{note}</p>
+            </article>
+          ))}
         </div>
       </motion.section>
     </div>

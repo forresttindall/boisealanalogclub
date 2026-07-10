@@ -1,194 +1,159 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Instagram } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
+const values = [
+  'Inclusivity',
+  'Learning',
+  'Intentionality',
+  'Experimentation',
+  'Community',
+  'Stewardship',
+]
 
-
-const About = ({ openWindow }) => {
-
-
+const About = ({ navigateTo }) => {
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  }
-
-  const leadership = [
-    {
-      name: "Forrest Tindall",
-      role: "Club Founder & President",
-      bio: "Began film photography in at the age of 4 with disposable cameras, went on to have a career in product photography for a number of years receiving publishing in Popular Mechanics magazine and others. Now enjoys film photography purely as a hobby just for the enjoyment of the art.",
-      
-      instagram: "forrest.creates"
-    }
-  ]
+    window.scrollTo({ top: 0, behavior: 'auto' })
+  }, [])
 
   return (
     <div className="page about-page">
-      <motion.div
+      <motion.section
+        className="section-panel"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.55 }}
       >
-        <h1>About Us</h1>
-        <p className="page-subtitle">Learn more about the Boise Analog Club and our mission</p>
-      </motion.div>
+        <div className="editorial-header">
+          <p className="section-index">04</p>
+          <div>
+            <p className="mono-label">About the Club</p>
+            <h1 className="section-title section-title-wide">
+              A film-first community for people who want more than a feed.
+            </h1>
+          </div>
+        </div>
 
-      <motion.section 
-        className="mission-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.6 }}
-      >
-        <h2>Our Mission</h2>
-        <div className="mission-content">
-          <p>
-            The Boise Analog Club exists to celebrate, preserve, and share the art of film photography 
-            in our digital age. We believe that analog photography offers a unique way to slow down, 
-            be intentional, and connect more deeply with our craft and our community.
-          </p>
-          
-          <p>
-            Founded in june of 2025, our club brings together photographers of all skill levels who 
-            share a passion for film. Whether you're drawn to the aesthetic qualities of grain and 
-            color rendition, the meditative process of manual focus and exposure, or simply the joy 
-            of not knowing exactly what you captured until you develop your film, you'll find kindred 
-            spirits here.
-          </p>
+        <div className="split-layout">
+          <div className="text-stack">
+            <p className="lead-copy">
+              Boise Analog Club exists to preserve the slowness, tactility, and
+              social energy of analog photography in a culture that usually
+              pushes everything toward speed.
+            </p>
+            <p>
+              Founded in June 2025, the club brings together photographers of
+              all skill levels who care about film as both a medium and a way
+              of paying attention. We like grain, sequence, process, and the
+              conversations that happen around prints, negatives, cameras, and
+              walks through the city.
+            </p>
+            <p>
+              You do not need to be an expert. You do not need a rare camera.
+              You just need curiosity and a willingness to show up.
+            </p>
+          </div>
+
+          <figure className="portrait-card">
+            <img src="/Images/bac.png" alt="Boise Analog Club poster artwork" />
+          </figure>
         </div>
       </motion.section>
 
-      <motion.section 
-        className="home-typo"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6, duration: 0.6 }}
+      <motion.section
+        className="section-panel"
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.55 }}
       >
-        <h2 className="home-typo-title">Our Values</h2>
-        <div className="home-features">
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Inclusivity</h3>
-            <p className='feature-desc'>Photography is for everyone. We welcome photographers of all backgrounds, skill levels, and identities. Our community thrives on diversity and mutual respect.</p>
-          </motion.div>
-
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Learning</h3>
-            <p className='feature-desc'>We believe in continuous growth and knowledge sharing. Whether you're teaching or learning, every interaction is an opportunity to expand our collective understanding.</p>
-          </motion.div>
-
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Creativity</h3>
-            <p className='feature-desc'>Film photography encourages intentional, thoughtful image-making. We celebrate unique perspectives and artistic expression in all its forms.</p>  
-          </motion.div>
-
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Community</h3>
-            <p className='feature-desc'>Strong relationships are the foundation of our club. We prioritize building genuine connections and supporting each other's photographic journeys.</p>
-          </motion.div>
-
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Sustainability</h3>
-            <p className='feature-desc'>We're committed to responsible photography practices and supporting the longevity of analog photography for future generations.</p>
-          </motion.div>
-
-          <motion.div className="feature" variants={itemVariants}>
-            <h3 className='feature-title'>Intentionality</h3>
-            <p className='feature-desc'>We embrace the slower, more deliberate approach that film photography naturally encourages.</p>
-          </motion.div>
+        <div className="editorial-header">
+          <p className="section-index">05</p>
+          <div>
+            <p className="mono-label">Values</p>
+            <h2 className="section-title">The culture we are trying to build.</h2>
+          </div>
         </div>
-      </motion.section>
 
-      <motion.section 
-        className="founders-section"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-      >
-        <h2>Leadership Team</h2>
-        <div className="founders-grid">
-          {leadership.map((member, index) => (
-            <motion.div
-              key={index}
-              className="founder-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 + index * 0.2 }}
-            >
-              <div className="founder-info">
-                <h3 className='feature-title'>{member.name}</h3>
-                <h4>{member.role}</h4>
-                <p className='feature-desc'>{member.bio}</p>
-              
-                <div className="founder-social">
-                  <a 
-                    href={`https://instagram.com/${member.instagram}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="instagram-link"
-                  >
-                    <Instagram className="instagram-icon" aria-hidden="true" />
-                    @{member.instagram}
-                  </a>
-                </div>
-              </div>
-            </motion.div>
+        <div className="value-grid">
+          {[
+            'Photography is for everyone. We welcome photographers of all backgrounds, skill levels, and identities. Our community thrives on diversity and mutual respect.',
+            "We believe in continuous growth and knowledge sharing. Whether you're teaching or learning, every interaction is an opportunity to expand our collective understanding.",
+            'We embrace the slower, more deliberate approach that film photography naturally encourages.',
+            'We celebrate experimentation, process, and making images that feel personal rather than optimized.',
+            "Strong relationships are the foundation of our club. We prioritize building genuine connections and supporting each other's photographic journeys.",
+            'We want to help sustain analog photography by keeping knowledge, tools, and enthusiasm in circulation.',
+          ].map((description, index) => (
+            <div className="value-card" key={values[index]}>
+              <span>{values[index]}</span>
+              <p>{description}</p>
+            </div>
           ))}
         </div>
       </motion.section>
 
-      <motion.section 
-        className="join-section"
-        initial={{ opacity: 0, y: 20 }}
+      <motion.section
+        className="section-panel founder-panel"
+        initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.55 }}
       >
-        <h2>Join Our Community</h2>
-        <div className="join-content">
-          <p>
-            Ready to be part of the Boise analog photography scene? We'd love to have you! 
-            There are no membership fees, no requirements other than an interest in film photography, 
-            and no pressure to attend every event.
-          </p>
-          
-          <div className="join-steps">
-            <div className="step">
-              <h3>1. Follow Us</h3>
-              <p>Stay updated on events and community news through our social media and email list.</p>
-                 <a 
-              href="https://instagram.com/Boise.analog.club"
+        <div className="editorial-header">
+          <p className="section-index">06</p>
+          <div>
+            <p className="mono-label">Leadership</p>
+            <h2 className="section-title">Built locally, led personally.</h2>
+          </div>
+        </div>
+
+        <div className="split-layout">
+          <div className="info-block founder-copy">
+            <p className="mono-label">Forrest Tindall / Founder</p>
+            <p>
+              Forrest began shooting film as a kid with disposable cameras and
+              later worked professionally in product photography, with work
+              published in outlets including Popular Mechanics. Boise Analog
+              Club grew from a desire to create a generous, design-aware
+              community around the practice of making images on film.
+            </p>
+            <a
+              href="https://instagram.com/Forrest.tindall"
               target="_blank"
               rel="noopener noreferrer"
-              className="instagram-link community-instagram"
+              className="inline-link"
             >
-              <Instagram className="instagram-icon" aria-hidden="true" />
-              @Boise.analog.club
+              @Forrest.tindall
             </a>
-            </div>
-            
-            <div className="step">
-              <h3>2. Attend an Event</h3>
-              <p>Join us for a photo walk, workshop, or gear swap to meet the community in person.</p>
-            </div>
-            
-            <div className="step">
-              <h3>3. Share Your Work</h3>
-              <p>We love seeing what our members create! Share your film photos with the group. Invite @Boise.analog.club to collaborate on Instagram!</p>
-            </div>
           </div>
-          
 
-          
-          <div className="contact-cta">
-            <div>
-            <p className="contact-cta">Questions? Ideas for events? Want to get involved in organizing?</p>
-            <button className="btn" onClick={() => openWindow('contact')}>
-              Get in Touch
-            </button>
-            </div>
+          <div className="steps-grid">
+            <article className="step-card">
+              <p className="mono-label">01 / Follow</p>
+              <p>Watch the club Instagram for new walks, meetups, and open calls.</p>
+            </article>
+            <article className="step-card">
+              <p className="mono-label">02 / Attend</p>
+              <p>Come to an event with whatever camera you already have.</p>
+            </article>
+            <article className="step-card">
+              <p className="mono-label">03 / Contribute</p>
+              <p>Share work, pitch ideas, collaborate, and help shape the culture.</p>
+            </article>
           </div>
+        </div>
+
+        <div className="cta-row">
+          <a
+            href="https://instagram.com/Boise.analog.club"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="primary-button link-button"
+          >
+            Follow @Boise.analog.club
+            <ArrowUpRight size={16} />
+          </a>
+          <button className="ghost-button" onClick={() => navigateTo('contact')}>
+            Start a Conversation
+          </button>
         </div>
       </motion.section>
     </div>
