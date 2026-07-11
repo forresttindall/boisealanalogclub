@@ -12,13 +12,23 @@ function getGoogleSheetsAuth() {
     )
   }
 
-  return new google.auth.GoogleAuth({
-    credentials: {
-      client_email: clientEmail,
-      private_key: privateKey.replace(/\\n/g, '\n'),
-    },
-    scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-  })
+  console.log('Attempting Google Sheets authentication...');
+  console.log('Client Email:', clientEmail);
+  // Log a portion of the private key to confirm it's being read, but redact most of it
+  console.log('Private Key (partial):', privateKey.substring(0, 30) + '...');
+
+  try {
+    return new google.auth.GoogleAuth({
+      credentials: {
+        client_email: clientEmail,
+        private_key: privateKey.replace(/\\n/g, '\n'),
+      },
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+  } catch (authError) {
+    console.error('Error creating GoogleAuth client:', authError);
+    throw new Error('Failed to authenticate with Google Sheets. Check credentials and environment. Original error: ' + authError.message);
+  }
 }
 
 function getSheetsClient() {
