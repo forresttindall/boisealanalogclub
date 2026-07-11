@@ -1,6 +1,10 @@
 import { isAdminRequest } from '../../_lib/auth.js'
 import { getSiteUrl, sendJson } from '../../_lib/http.js'
-import { getLastNewsletterSend, getSubscriberCount } from '../../_lib/subscribers.js'
+import {
+  getLastNewsletterSend,
+  getSubscriberCount,
+  toNewsletterStorageError,
+} from '../../_lib/subscribers.js'
 import { EVENTS_PAGE_HASH, currentEventFlyer, toAbsoluteUrl } from '../../../shared/eventFlyer.js'
 import { newsletterSheet } from '../../../shared/newsletterSheet.js'
 
@@ -23,7 +27,8 @@ export default async function handler(req, res) {
       subscriberCount = await getSubscriberCount()
       lastSend = await getLastNewsletterSend()
     } catch (error) {
-      backendWarning = error.message || 'Newsletter storage is not configured yet.'
+      backendWarning =
+        toNewsletterStorageError(error).message || 'Newsletter storage is not configured yet.'
     }
 
     return sendJson(res, 200, {

@@ -2,6 +2,58 @@ import { google } from 'googleapis'
 import { normalizeEmail } from './crypto.js'
 import { newsletterSheet } from '../../shared/newsletterSheet.js'
 
+function normalizeGooglePrivateKey(privateKey) {
+  const rawValue = String(privateKey || '').trim()
+
+  if (!rawValue) {
+    throw new Error('Missing GOOGLE_SHEETS_PRIVATE_KEY environment variable.')
+  }
+
+  let normalizedKey = rawValue
+
+  if (
+    (normalizedKey.startsWith('"') && normalizedKey.endsWith('"')) ||
+    (normalizedKey.startsWith("'") && normalizedKey.endsWith("'"))
+  ) {
+    normalizedKey = normalizedKey.slice(1, -1)
+  }
+
+  normalizedKey = normalizedKey
+    .replace(/\\r\\n/g, '\n')
+    .replace(/\\n/g, '\n')
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .trim()
+
+  if (
+    !normalizedKey.includes('-----BEGIN PRIVATE KEY-----') ||
+    !normalizedKey.includes('-----END PRIVATE KEY-----')
+  ) {
+    throw new Error(
+      'Invalid GOOGLE_SHEETS_PRIVATE_KEY format. Make sure the full PEM key is set in the environment.'
+    )
+  }
+
+  return normalizedKey
+}
+
+export function toNewsletterStorageError(error) {
+  const message = String(error?.message || '')
+
+  if (
+    message.includes('DECODER routines::unsupported') ||
+    message.includes('ERR_OSSL') ||
+    message.includes('PEM') ||
+    message.includes('private key')
+  ) {
+    return new Error(
+      'Newsletter storage is not configured correctly. Verify GOOGLE_SHEETS_CLIENT_EMAIL and GOOGLE_SHEETS_PRIVATE_KEY on the server.'
+    )
+  }
+
+  return error instanceof Error ? error : new Error('Unable to access newsletter storage.')
+}
+
 function getGoogleSheetsAuth() {
   const clientEmail = process.env.GOOGLE_SHEETS_CLIENT_EMAIL
   const privateKey = process.env.GOOGLE_SHEETS_PRIVATE_KEY
@@ -12,22 +64,22 @@ function getGoogleSheetsAuth() {
     )
   }
 
-  console.log('Attempting Google Sheets authentication...');
-  console.log('Client Email:', clientEmail);
-  // Log a portion of the private key to confirm it's being read, but redact most of it
-  console.log('Private Key (partial):', privateKey.substring(0, 30) + '...');
+  const normalizedPrivateKey = normalizeGooglePrivateKey(privateKey)
 
   try {
     return new google.auth.GoogleAuth({
       credentials: {
         client_email: clientEmail,
-        private_key: privateKey.replace(/\\n/g, '\n'),
+        private_key: normalizedPrivateKey,
       },
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    });
-  } catch (authError) {
-    console.error('Error creating GoogleAuth client:', authError);
-    throw new Error('Failed to authenticate with Google Sheets. Check credentials and environment. Original error: ' + authError.message);
+    })
+  } catch {
+    throw toNewsletterStorageError(
+      new Error(
+        'Failed to authenticate with Google Sheets. Check GOOGLE_SHEETS_CLIENT_EMAIL and GOOGLE_SHEETS_PRIVATE_KEY in the environment.'
+      )
+    )
   }
 }
 

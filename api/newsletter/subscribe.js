@@ -1,6 +1,6 @@
 import { allowMethods, parseJsonBody, sendJson } from '../_lib/http.js'
 import { normalizeEmail, validateEmail } from '../_lib/crypto.js'
-import { upsertSubscriber } from '../_lib/subscribers.js'
+import { toNewsletterStorageError, upsertSubscriber } from '../_lib/subscribers.js'
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -23,8 +23,10 @@ export default async function handler(req, res) {
       message: 'You are subscribed to Boise Analog Club updates.',
     })
   } catch (error) {
+    const safeError = toNewsletterStorageError(error)
+
     return sendJson(res, 500, {
-      error: error.message || 'Unable to save this subscription right now.',
+      error: safeError.message || 'Unable to save this subscription right now.',
     })
   }
 }

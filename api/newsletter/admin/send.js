@@ -3,6 +3,7 @@ import { getSiteUrl, sendJson } from '../../_lib/http.js'
 import {
   getSubscriberCount,
   setLastNewsletterSend,
+  toNewsletterStorageError,
 } from '../../_lib/subscribers.js'
 import { EVENTS_PAGE_HASH, currentEventFlyer, toAbsoluteUrl } from '../../../shared/eventFlyer.js'
 import { newsletterSheet } from '../../../shared/newsletterSheet.js'
@@ -45,8 +46,10 @@ export default async function handler(req, res) {
       eventsPageUrl,
     })
   } catch (error) {
+    const safeError = toNewsletterStorageError(error)
+
     return sendJson(res, 500, {
-      error: error.message || 'Unable to send the newsletter right now.',
+      error: safeError.message || 'Unable to send the newsletter right now.',
     })
   }
 }
