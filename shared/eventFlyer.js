@@ -1,8 +1,8 @@
 export const EVENTS_PAGE_HASH = '#events'
 
 export const currentEventFlyer = {
-  imagePath: '/Images/bac july 2026.png',
-  imageAlt: 'Boise Analog Club July 2026 flyer',
+  imagePath: '/Images/BAC AUG 2026.png',
+  imageAlt: 'Boise Analog Club August 2026 flyer',
   emailSubject: 'Boise Analog Club / Latest update',
   emailHeadline: 'The newest Boise Analog Club flyer is live.',
   emailBody:
